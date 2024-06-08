@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Background</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">Pilih Warna</div>
+        <div class="box">
+            <div class="circle red"></div>
+            <div class="circle blue"></div>
+            <div class="circle yellow"></div>
+            <div class="circle black"></div>
+        </div>
+        <button class="reset">Atur Ulang Warna</button>
+    </div>
+    <script>
+        const circles = document.querySelectorAll('.circle')
+        const blackCircle = document.querySelector('.black')
+        const title = document.querySelector('.title')
+
+        circles.forEach(circle => {
+            circle.addEventListener('click', ({ target }) => {
+                const computedStyle = getComputedStyle(target)
+                console.log(computedStyle.backgroundColor)
+                document.body.style.backgroundColor = computedStyle.backgroundColor
+                title.style.color="black"
+            })
+        })
+
+        blackCircle.addEventListener('click', function(){
+            title.style.color="white"
+        })
+
+        const buttonReset = document.querySelector('.reset')
+
+        buttonReset.addEventListener('click', function () {
+           document.body.style.backgroundColor="white"
+           title.style.color="black"
+        })
+    </script>
+</body>
+
+</html>
